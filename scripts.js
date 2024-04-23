@@ -24,7 +24,7 @@ function mostrarTarefas() {
 
 
     minhaListaDeItens.forEach((item, posição) => {
-        novaLi = novaLi + `<li class="task ${item.concluida && "done"}">
+        novaLi = novaLi + `<li class="task ${item.concluida && 'done'}">
         <img src="./img/checked.png" alt="check-na-tarefa" onclick="concluirTarefa(${posição} )" >
         <p>${item.tarefa} </p>
         <img src="./img/trash.png" alt="tarefa-para-o-lixo" onclick="deletarItem(${posição} )">
@@ -49,8 +49,9 @@ function deletarItem(posição) {
 }
 function recarregarTarefas(){
     const tarefasDoLocalStorage = localStorage.getItem('lista')
+if (tarefasDoLocalStorage) {
     minhaListaDeItens = JSON.parse (tarefasDoLocalStorage)
-    console.log(tarefasDoLocalStorage)
+}
     
 mostrarTarefas()
 
